@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Croissance Phase 3 & 4 — Christian Church Kolwezi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080D1A;--surf:#0F1628;--card:#141C32;--bdr:#1E2D4A;--dim:#2A3A5A;--gold:#D4A843;--gl:#F0C354;--gdim:rgba(212,168,67,0.13);--txt:#EAF0FF;--mut:#7A8BAD;--grn:#22C97A;--gdm:rgba(34,201,122,0.12);--blu:#5B9BFF;--bdm:rgba(91,155,255,0.12);--pur:#A78BFA;--pdm:rgba(167,139,250,0.12);--red:#F06060;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--txt);font-family:'Lato',sans-serif;line-height:1.7;}
+.en{display:none!important;}.fr{display:block;}
+span.en{display:none!important;}span.fr{display:inline;}
+body.lang-en .en{display:block!important;}body.lang-en .fr{display:none!important;}
+body.lang-en span.en{display:inline!important;}body.lang-en span.fr{display:none!important;}
+header{background:var(--surf);border-bottom:1px solid var(--bdr);padding:16px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--gold),#F5A623);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.church-nm{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;line-height:1.2;}
+.church-loc{font-size:10px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;}
+.hdr-r{display:flex;align-items:center;gap:10px;}
+.lang-btn{background:var(--gdim);border:1px solid var(--gold);border-radius:20px;padding:6px 14px;color:var(--gold);font-size:12px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;transition:.2s;}
+.lang-btn:hover{background:var(--gold);color:#0A0D1A;}
+.doc-badge{background:var(--pdm);border:1px solid var(--pur);border-radius:20px;padding:5px 12px;color:var(--pur);font-size:11px;font-family:'Lato',sans-serif;}
+.back-link{color:var(--gold);font-size:12px;text-decoration:none;border:1px solid var(--bdr);border-radius:8px;padding:6px 12px;transition:.2s;}
+.back-link:hover{border-color:var(--gold);}
+.hero{background:linear-gradient(135deg,#0B1020 0%,#1A1040 60%,#0E1526 100%);padding:56px 40px;text-align:center;border-bottom:1px solid var(--bdr);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse,rgba(167,139,250,.05) 0%,transparent 60%);pointer-events:none;}
+.phase-badge{display:inline-block;background:var(--pdm);border:1px solid var(--pur);border-radius:20px;padding:5px 16px;font-size:11px;color:var(--pur);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:900;margin-bottom:12px;background:linear-gradient(135deg,#C4B0FF,var(--pur));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:17px;color:var(--mut);max-width:580px;margin:0 auto 24px;}
+.pastor-row{background:var(--card);border:1px solid var(--bdr);border-radius:12px;padding:12px 22px;display:inline-flex;align-items:center;gap:14px;}
+.av{width:34px;height:34px;border-radius:50%;background:var(--gdim);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold);font-size:12px;flex-shrink:0;}
+.pname{color:var(--txt);font-weight:700;font-size:13px;}
+.ptitle{color:var(--mut);font-size:10px;}
+.sep{width:1px;height:34px;background:var(--bdr);}
+.prog-bar{background:var(--surf);border-bottom:1px solid var(--bdr);padding:18px 40px;}
+.prog-lbl{font-size:11px;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+.prog-track{display:flex;align-items:flex-start;gap:0;}
+.ps{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;}
+.ps::after{content:'';position:absolute;top:13px;left:50%;width:100%;height:2px;background:var(--bdr);z-index:0;}
+.ps:last-child::after{display:none;}
+.pd{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;z-index:1;border:2px solid;}
+.pd.done{background:var(--grn);border-color:var(--grn);color:#fff;}
+.pd.active{background:var(--pdm);border-color:var(--pur);color:var(--pur);animation:pulse 2s infinite;}
+.pd.up{background:var(--dim);border-color:var(--dim);color:var(--mut);}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(167,139,250,.4)}50%{box-shadow:0 0 0 8px rgba(167,139,250,0)}}
+.pl{font-size:10px;color:var(--mut);margin-top:5px;text-align:center;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+.pr{font-size:9px;color:var(--dim);}
+main{max-width:960px;margin:0 auto;padding:40px;}
+.sec{margin-bottom:44px;}
+.sec-hdr{display:flex;align-items:flex-start;gap:14px;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--bdr);}
+.pnum{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:900;flex-shrink:0;}
+.ph3{background:var(--gdm);border:2px solid var(--grn);color:var(--grn);}
+.ph4{background:var(--pdm);border:2px solid var(--pur);color:var(--pur);}
+.stb h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;}
+.stb .range{font-size:18px;font-weight:300;color:var(--mut);}
+.stb p{color:var(--mut);font-size:13px;margin-top:4px;}
+.tbadge{background:var(--surf);border:1px solid var(--bdr);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--mut);display:inline-block;margin-top:5px;}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.mc{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:14px;}
+.ml{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:5px;}
+.mv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;}
+.ms{font-size:11px;color:var(--grn);margin-top:2px;}
+.ck-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ck{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:13px 15px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:.2s;}
+.ck:hover{border-color:var(--pur);background:rgba(167,139,250,.03);}
+.ck.done{border-color:var(--grn);background:var(--gdm);}
+.cb{width:18px;height:18px;border-radius:5px;border:2px solid var(--bdr);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:.2s;font-size:11px;}
+.ck.done .cb{background:var(--grn);border-color:var(--grn);color:#fff;}
+.ct{font-size:13px;line-height:1.5;}
+.cs{font-size:11px;color:var(--mut);margin-top:2px;}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;}
+.tc{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:13px;}
+.tcat{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:7px;}
+.ti{font-size:12px;color:var(--mut);padding:3px 0;border-bottom:1px solid var(--dim);display:flex;justify-content:space-between;align-items:center;}
+.ti:last-child{border-bottom:none;}
+.tag{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:700;}
+.free{background:var(--gdm);color:var(--grn);}
+.low{background:var(--bdm);color:var(--blu);}
+.med{background:var(--gdim);color:var(--gold);}
+.high{background:var(--pdm);color:var(--pur);}
+.kpi-box{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:18px;margin-top:18px;}
+.kpi-ttl{font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;}
+.krow{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--dim);}
+.krow:last-child{border-bottom:none;}
+.kn{font-size:13px;}
+.kt{font-size:13px;color:var(--mut);}
+.ks{font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;}
+hr{border:none;border-top:1px solid var(--bdr);margin:28px 0;}
+.sec-lbl{font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 10px;}
+.vision-box{background:linear-gradient(135deg,#0E0A20,#1A1040);border:1px solid var(--pur);border-radius:14px;padding:30px;margin-top:36px;text-align:center;}
+.vision-box h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--pur);margin-bottom:10px;}
+.vision-box .quote{font-family:'Playfair Display',serif;font-size:18px;color:var(--txt);font-style:italic;margin-bottom:20px;opacity:.85;}
+.vision-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;}
+.vs{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:14px;text-align:center;}
+.vs-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gl);}
+.vs-lbl{font-size:11px;color:var(--mut);margin-top:3px;}
+.cta{background:linear-gradient(135deg,var(--card),#1A1040);border:1px solid var(--gold);border-radius:12px;padding:26px 28px;text-align:center;margin-top:36px;}
+.cta h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gl);margin-bottom:8px;}
+.cta p{color:var(--mut);font-size:14px;margin-bottom:18px;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn{background:var(--gold);color:#0A0D1A;padding:11px 26px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;display:inline-block;font-family:'Lato',sans-serif;}
+.cta-btn:hover{background:var(--gl);}
+.cta-btn2{background:transparent;color:var(--gold);padding:11px 26px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;display:inline-block;border:1px solid var(--gold);font-family:'Lato',sans-serif;}
+.cta-btn2:hover{background:var(--gdim);}
+footer{background:var(--surf);border-top:1px solid var(--bdr);padding:20px 40px;text-align:center;}
+.fn{font-family:'Playfair Display',serif;font-size:14px;color:var(--gold);margin-bottom:4px;}
+.fs{font-size:12px;color:var(--mut);}
+@media(max-width:768px){.metrics,.ck-grid,.tools,.vision-stats{grid-template-columns:1fr;}.hero h1{font-size:26px;}header{padding:12px 16px;flex-wrap:wrap;gap:8px;}main{padding:24px 16px;}.prog-bar{padding:14px 16px;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <div class="logo-icon">⛪</div>
+    <div>
+      <div class="church-nm">Christian Church</div>
+      <div class="church-loc">Kolwezi · RD Congo</div>
+    </div>
+  </div>
+  <div class="hdr-r">
+    <span class="doc-badge"><span class="fr">Document 2/2 — Mouvement</span><span class="en">Document 2/2 — Movement</span></span>
+    <button class="lang-btn" id="lbtn" onclick="toggleLang()">🌐 EN</button>
+    <a href="growth-phase-1-2.html" class="back-link"><span class="fr">← Phase 1 & 2</span><span class="en">← Phase 1 & 2</span></a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="phase-badge"><span class="fr">Document 2 sur 2 — Phase 3 & 4</span><span class="en">Document 2 of 2 — Phase 3 & 4</span></div>
+  <h1><span class="fr">Multi-Sites & Mouvement Continental</span><span class="en">Multi-Site & Continental Movement</span></h1>
+  <p class="hero-sub"><span class="fr">De 1 000 à 10 000 membres — Bâtir une église qui change une nation, un continent, un monde</span><span class="en">From 1,000 to 10,000 — Build a church that changes a nation, a continent, the world</span></p>
+  <div class="pastor-row">
+    <div class="av">DT</div>
+    <div><div class="pname">Pasteur Djo Tshibal</div><div class="ptitle"><span class="fr">Pasteur Principal</span><span class="en">Lead Pastor</span></div></div>
+    <div class="sep"></div>
+    <div class="av">PT</div>
+    <div><div class="pname">Maman Patricia Tshibal</div><div class="ptitle"><span class="fr">Pasteure Co-Fondatrice</span><span class="en">Co-Founding Pastor</span></div></div>
+  </div>
+</div>
+
+<div class="prog-bar">
+  <div class="prog-lbl"><span class="fr">Votre progression — 100 → 10 000 membres</span><span class="en">Your journey — 100 → 10,000 members</span></div>
+  <div class="prog-track">
+    <div class="ps"><div class="pd done">✓</div><div class="pl" style="color:var(--grn)"><span class="fr">Phase 1</span><span class="en">Phase 1</span><div class="pr">100→300</div></div></div>
+    <div class="ps"><div class="pd done">✓</div><div class="pl" style="color:var(--grn)"><span class="fr">Phase 2</span><span class="en">Phase 2</span><div class="pr">300→1K</div></div></div>
+    <div class="ps"><div class="pd active">3</div><div class="pl" style="color:var(--grn)"><span class="fr">Phase 3</span><span class="en">Phase 3</span><div class="pr">1K→3K</div></div></div>
+    <div class="ps"><div class="pd up">4</div><div class="pl"><span class="fr">Phase 4</span><span class="en">Phase 4</span><div class="pr">3K→10K</div></div></div>
+  </div>
+</div>
+
+<main>
+<!-- PHASE 3 -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="pnum ph3">3</div>
+    <div class="stb">
+      <h2><span class="fr">Préparation Multi-Sites</span><span class="en">Multi-Site Preparation</span><span class="range"> — 1 000 → 3 000</span></h2>
+      <p><span class="fr">Embaucher une équipe, lancer un 2e service, conquérir la diaspora mondiale, lancer l'application mobile</span><span class="en">Hire a team, launch 2nd service, reach global diaspora, launch mobile app</span></p>
+      <span class="tbadge" style="background:var(--gdm);border-color:var(--grn);color:var(--grn)"><span class="fr">⏱ Mois 19 – 36</span><span class="en">⏱ Months 19 – 36</span></span>
+    </div>
+  </div>
+  <div class="metrics">
+    <div class="mc" style="border-top:3px solid var(--grn)"><div class="ml"><span class="fr">Cible Membres</span><span class="en">Target Members</span></div><div class="mv">3 000</div><div class="ms" style="color:var(--grn)"><span class="fr">Objectif</span><span class="en">Target</span></div></div>
+    <div class="mc" style="border-top:3px solid var(--gold)"><div class="ml"><span class="fr">Staff</span><span class="en">Staff</span></div><div class="mv">5 – 8</div><div class="ms"><span class="fr">Temps plein</span><span class="en">Full time</span></div></div>
+    <div class="mc" style="border-top:3px solid var(--blu)"><div class="ml"><span class="fr">Abonnés App</span><span class="en">App Downloads</span></div><div class="mv">10K</div><div class="ms"><span class="fr">Téléchargements</span><span class="en">Downloads</span></div></div>
+    <div class="mc" style="border-top:3px solid var(--pur)"><div class="ml"><span class="fr">Vues Totales</span><span class="en">Total Views</span></div><div class="mv">1M+</div><div class="ms"><span class="fr">Contenu cumulé</span><span class="en">Cumulative content</span></div></div>
+  </div>
+  <div class="sec-lbl"><span class="fr">✅ Liste de Contrôle — Phase 3</span><span class="en">✅ Phase 3 Checklist</span></div>
+  <div class="ck-grid" id="p3">
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">👔 Recruter pasteur associé + équipe (5–8 personnes)</span><span class="en">👔 Hire associate pastor + team (5–8 people)</span></div><div class="cs"><span class="fr">Pasteur des jeunes, directeur administratif, directeur médias</span><span class="en">Youth pastor, admin director, media director</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🕙 Lancer un 2e service dominical</span><span class="en">🕙 Launch a 2nd Sunday service</span></div><div class="cs"><span class="fr">Doubler la capacité d'accueil sans agrandir le bâtiment</span><span class="en">Double capacity without expanding the building</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">📱 Lancer l'application mobile de l'église</span><span class="en">📱 Launch church mobile app</span></div><div class="cs"><span class="fr">Subsplash ou Church App — sermons, dons, événements, prière</span><span class="en">Subsplash or Church App — sermons, giving, events, prayer</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🌍 Campus en ligne 500+ membres réguliers</span><span class="en">🌍 Online campus 500+ regular members</span></div><div class="cs"><span class="fr">Diaspora congolaise : France, Belgique, Canada, USA</span><span class="en">Congolese diaspora: France, Belgium, Canada, USA</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🎬 Clips de sermons à 1M+ vues cumulées</span><span class="en">🎬 Sermon clips at 1M+ cumulative views</span></div><div class="cs"><span class="fr">TikTok, YouTube Shorts, Instagram Reels — stratégie virale</span><span class="en">TikTok, YouTube Shorts, Instagram Reels — viral strategy</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🏗️ Campagne du Fonds de Construction</span><span class="en">🏗️ Building Fund Campaign</span></div><div class="cs"><span class="fr">Propriété propre — engagement financier de la congrégation</span><span class="en">Own property — financial commitment of congregation</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🎓 École de Ministère formelle</span><span class="en">🎓 Formal Ministry School</span></div><div class="cs"><span class="fr">Certificats, pipeline de leadership, envoi de planteurs d'église</span><span class="en">Certificates, leadership pipeline, church planters sent</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">📍 Repérage du 2e site physique</span><span class="en">📍 Scout 2nd physical location</span></div><div class="cs"><span class="fr">Autre quartier de Kolwezi ou ville voisine — Lubumbashi, Likasi</span><span class="en">Another Kolwezi neighborhood or nearby city — Lubumbashi, Likasi</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">📻 Studio de production professionnel</span><span class="en">📻 Professional production studio</span></div><div class="cs"><span class="fr">Investir dans l'audio/vidéo — qualité compétitive mondiale</span><span class="en">Invest in audio/video — world-competitive quality</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">💰 Budget annuel $150K+ géré professionnellement</span><span class="en">💰 Annual budget $150K+ managed professionally</span></div><div class="cs"><span class="fr">Comptable dédié, conseil de finance, audits annuels</span><span class="en">Dedicated accountant, finance board, annual audits</span></div></div></div>
+  </div>
+  <div class="kpi-box">
+    <div class="kpi-ttl"><span class="fr">📊 Indicateurs Clés — Phase 3</span><span class="en">📊 Key Indicators — Phase 3</span></div>
+    <div class="krow"><span class="kn"><span class="fr">Membres totaux</span><span class="en">Total members</span></span><span class="kt">3 000</span><span class="ks" style="background:var(--gdm);color:var(--grn)"><span class="fr">Objectif</span><span class="en">Target</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">Staff à temps plein</span><span class="en">Full-time staff</span></span><span class="kt">5 – 8</span><span class="ks" style="background:var(--gdim);color:var(--gold)"><span class="fr">Recrutement</span><span class="en">Recruit</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">App téléchargements</span><span class="en">App downloads</span></span><span class="kt">10 000+</span><span class="ks" style="background:var(--bdm);color:var(--blu)"><span class="fr">Lancer</span><span class="en">Launch</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">Budget mensuel</span><span class="en">Monthly budget</span></span><span class="kt">$12 500+</span><span class="ks" style="background:var(--gdm);color:var(--grn)"><span class="fr">Opérationnel</span><span class="en">Operational</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">Vues YouTube / mois</span><span class="en">YouTube views / month</span></span><span class="kt">100 000+</span><span class="ks" style="background:var(--pdm);color:var(--pur)"><span class="fr">Audience</span><span class="en">Audience</span></span></div>
+  </div>
+  <div class="sec-lbl"><span class="fr">🛠️ Outils — Phase 3</span><span class="en">🛠️ Tools — Phase 3</span></div>
+  <div class="tools">
+    <div class="tc"><div class="tcat"><span class="fr">App Mobile</span><span class="en">Mobile App</span></div><div class="ti">Subsplash<span class="tag med">$199/mo</span></div><div class="ti">Church App<span class="tag med">$99/mo</span></div><div class="ti">Custom (React Native)<span class="tag high">$2K+</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Production Vidéo</span><span class="en">Video Production</span></div><div class="ti">DaVinci Resolve<span class="tag free">GRATUIT</span></div><div class="ti">Adobe Premiere<span class="tag med">$55/mo</span></div><div class="ti">After Effects<span class="tag med">$55/mo</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Multi-Sites</span><span class="en">Multi-Site</span></div><div class="ti">Planning Center<span class="tag med">$199/mo</span></div><div class="ti">Salesforce NPSP<span class="tag free">GRATUIT</span></div><div class="ti">Slack Teams<span class="tag low">$8/mo</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Médias Sociaux Pro</span><span class="en">Pro Social Media</span></div><div class="ti">Hootsuite<span class="tag med">$99/mo</span></div><div class="ti">Sprout Social<span class="tag med">$89/mo</span></div><div class="ti">Later<span class="tag low">$25/mo</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Email Marketing</span><span class="en">Email Marketing</span></div><div class="ti">Klaviyo<span class="tag med">$45/mo</span></div><div class="ti">ActiveCampaign<span class="tag med">$49/mo</span></div><div class="ti">ConvertKit<span class="tag med">$29/mo</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Équipement Audio/Vidéo</span><span class="en">Audio/Video Equipment</span></div><div class="ti">Caméra Sony ZV-E10<span class="tag med">~$800</span></div><div class="ti">Rode Microphones<span class="tag med">~$200</span></div><div class="ti">Lighting Kit<span class="tag low">~$150</span></div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- PHASE 4 -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="pnum ph4">4</div>
+    <div class="stb">
+      <h2><span class="fr">Le Mouvement</span><span class="en">The Movement</span><span class="range"> — 3 000 → 10 000+</span></h2>
+      <p><span class="fr">Devenir une force nationale et continentale : multi-sites, conférence annuelle, impact sur les nations</span><span class="en">Become a national and continental force: multi-site, annual conference, impact on nations</span></p>
+      <span class="tbadge" style="background:var(--pdm);border-color:var(--pur);color:var(--pur)"><span class="fr">⏱ Mois 37 – 60 · 🔮 VISION FUTURE</span><span class="en">⏱ Months 37 – 60 · 🔮 FUTURE VISION</span></span>
+    </div>
+  </div>
+  <div class="metrics">
+    <div class="mc" style="border-top:3px solid var(--pur)"><div class="ml"><span class="fr">Membres Totaux</span><span class="en">Total Members</span></div><div class="mv">10 000+</div><div class="ms" style="color:var(--pur)"><span class="fr">Vision</span><span class="en">Vision</span></div></div>
+    <div class="mc" style="border-top:3px solid var(--gold)"><div class="ml"><span class="fr">Sites Physiques</span><span class="en">Physical Sites</span></div><div class="mv">2 – 4</div><div class="ms"><span class="fr">Villes du Katanga</span><span class="en">Katanga cities</span></div></div>
+    <div class="mc" style="border-top:3px solid var(--grn)"><div class="ml"><span class="fr">App Downloads</span><span class="en">App Downloads</span></div><div class="mv">50K+</div><div class="ms"><span class="fr">Utilisateurs actifs</span><span class="en">Active users</span></div></div>
+    <div class="mc" style="border-top:3px solid var(--red)"><div class="ml"><span class="fr">Staff</span><span class="en">Staff</span></div><div class="mv">20 – 35</div><div class="ms"><span class="fr">Équipe complète</span><span class="en">Full team</span></div></div>
+  </div>
+  <div class="sec-lbl"><span class="fr">✅ Liste de Contrôle — Phase 4 (Vision)</span><span class="en">✅ Phase 4 Checklist (Vision)</span></div>
+  <div class="ck-grid" id="p4">
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🏛️ Lancer 2–4 sites multi-sites</span><span class="en">🏛️ Launch 2–4 multi-site locations</span></div><div class="cs"><span class="fr">Lubumbashi, Likasi, Kamina — expansion au Katanga</span><span class="en">Lubumbashi, Likasi, Kamina — expand across Katanga</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">📺 Présence médiatique nationale</span><span class="en">📺 National media presence</span></div><div class="cs"><span class="fr">Télévision nationale, radio chrétienne, presse nationale</span><span class="en">National TV, Christian radio, national press</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">📚 Livre / livre de Pasteur Djo publié</span><span class="en">📚 Book by Pastor Djo published</span></div><div class="cs"><span class="fr">Distribution FR & EN — diaspora et librairies chrétiennes</span><span class="en">FR & EN distribution — diaspora and Christian bookstores</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🎤 Conférence annuelle lancée</span><span class="en">🎤 Annual conference launched</span></div><div class="cs"><span class="fr">1 000+ participants — intervenants nationaux et internationaux</span><span class="en">1,000+ attendees — national and international speakers</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🌐 Réseau d'églises planté</span><span class="en">🌐 Church planting network</span></div><div class="cs"><span class="fr">Diplômés de l'École de Ministère plantent des églises filles</span><span class="en">Ministry School graduates plant daughter churches</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">📱 App atteint 50K téléchargements</span><span class="en">📱 App reaches 50K downloads</span></div><div class="cs"><span class="fr">Utilisateurs actifs en RDC, diaspora mondiale</span><span class="en">Active users in DRC, global diaspora</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">💼 Fonds de dotation et propriété immobilière</span><span class="en">💼 Endowment fund and real estate ownership</span></div><div class="cs"><span class="fr">Église propriétaire de ses bâtiments — patrimoine durable</span><span class="en">Church owns its buildings — lasting heritage</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🎓 Équipe staff de 20–35 personnes</span><span class="en">🎓 Staff team of 20–35 people</span></div><div class="cs"><span class="fr">Pasteurs, directeurs, équipes créatives et techniques</span><span class="en">Pastors, directors, creative and technical teams</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🌍 Impact social : ONG, école, clinique</span><span class="en">🌍 Social impact: NGO, school, clinic</span></div><div class="cs"><span class="fr">L'église transforme Kolwezi physiquement et spirituellement</span><span class="en">The church transforms Kolwezi physically and spiritually</span></div></div></div>
+    <div class="ck" onclick="chk(this)"><div class="cb"></div><div><div class="ct"><span class="fr">🇨🇩 Christian Church = marque nationale connue</span><span class="en">🇨🇩 Christian Church = nationally known brand</span></div><div class="cs"><span class="fr">Référence spirituelle du Katanga — impact continental</span><span class="en">Spiritual reference of Katanga — continental impact</span></div></div></div>
+  </div>
+  <div class="kpi-box">
+    <div class="kpi-ttl"><span class="fr">📊 Indicateurs Clés — Phase 4 (Vision 5 ans)</span><span class="en">📊 Key Indicators — Phase 4 (5-Year Vision)</span></div>
+    <div class="krow"><span class="kn"><span class="fr">Membres totaux toutes locations</span><span class="en">Total members all locations</span></span><span class="kt">10 000+</span><span class="ks" style="background:var(--pdm);color:var(--pur)"><span class="fr">Vision</span><span class="en">Vision</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">Budget annuel</span><span class="en">Annual budget</span></span><span class="kt">$1M+</span><span class="ks" style="background:var(--gdim);color:var(--gold)"><span class="fr">Cible</span><span class="en">Target</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">Influenceurs spirituels formés</span><span class="en">Spiritual influencers trained</span></span><span class="kt">200+</span><span class="ks" style="background:var(--gdm);color:var(--grn)"><span class="fr">Impact</span><span class="en">Impact</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">Présence en ligne (abonnés tous réseaux)</span><span class="en">Online reach (all platform subscribers)</span></span><span class="kt">500K+</span><span class="ks" style="background:var(--pdm);color:var(--pur)"><span class="fr">Mouvement</span><span class="en">Movement</span></span></div>
+    <div class="krow"><span class="kn"><span class="fr">Conférence annuelle participants</span><span class="en">Annual conference attendees</span></span><span class="kt">1 000+</span><span class="ks" style="background:var(--bdm);color:var(--blu)"><span class="fr">Réseau</span><span class="en">Network</span></span></div>
+  </div>
+  <div class="sec-lbl"><span class="fr">🛠️ Outils & Infrastructure — Phase 4</span><span class="en">🛠️ Tools & Infrastructure — Phase 4</span></div>
+  <div class="tools">
+    <div class="tc"><div class="tcat"><span class="fr">Gestion Multi-Sites</span><span class="en">Multi-Site Mgmt</span></div><div class="ti">Planning Center<span class="tag med">$299/mo</span></div><div class="ti">Rock RMS<span class="tag free">GRATUIT</span></div><div class="ti">Salesforce NPSP<span class="tag free">GRATUIT</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Studio Broadcast</span><span class="en">Broadcast Studio</span></div><div class="ti">Blackmagic ATEM<span class="tag med">~$1K</span></div><div class="ti">Professional cameras<span class="tag high">~$3K+</span></div><div class="ti">PTZ cameras<span class="tag med">~$500/ea</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Conférence & Événements</span><span class="en">Conference & Events</span></div><div class="ti">Eventbrite<span class="tag low">Variable</span></div><div class="ti">Whova<span class="tag med">$500/event</span></div><div class="ti">Zoom Webinar<span class="tag med">$149/mo</span></div></div>
+    <div class="tc"><div class="tcat">App & Tech</div><div class="ti">Subsplash Pro<span class="tag med">$299/mo</span></div><div class="ti">Custom API dev<span class="tag high">$5K+</span></div><div class="ti">AWS/Google Cloud<span class="tag med">Variable</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Communication</span><span class="en">Communication</span></div><div class="ti">HubSpot CRM<span class="tag free">GRATUIT</span></div><div class="ti">Klaviyo<span class="tag med">$150/mo</span></div><div class="ti">Twilio SMS<span class="tag med">Variable</span></div></div>
+    <div class="tc"><div class="tcat"><span class="fr">Finance & Juridique</span><span class="en">Finance & Legal</span></div><div class="ti">QuickBooks<span class="tag med">$30/mo</span></div><div class="ti">Tithe.ly Giving<span class="tag med">$79/mo</span></div><div class="ti">Legal counsel<span class="tag high">Annual</span></div></div>
+  </div>
+</div>
+
+<div class="vision-box">
+  <h3><span class="fr">✝️ La Vision Finale — Christian Church Kolwezi</span><span class="en">✝️ The Final Vision — Christian Church Kolwezi</span></h3>
+  <p class="quote"><span class="fr">"Une église de Kolwezi qui touche le monde entier."</span><span class="en">"A church from Kolwezi that touches the whole world."</span></p>
+  <p style="color:var(--mut);font-size:14px;"><span class="fr">Pasteur Djo & Maman Patricia Tshibal — Christian Church, RD Congo</span><span class="en">Pastor Djo & Maman Patricia Tshibal — Christian Church, DRC</span></p>
+  <div class="vision-stats">
+    <div class="vs"><div class="vs-num">10K+</div><div class="vs-lbl"><span class="fr">Membres</span><span class="en">Members</span></div></div>
+    <div class="vs"><div class="vs-num">4</div><div class="vs-lbl"><span class="fr">Villes</span><span class="en">Cities</span></div></div>
+    <div class="vs"><div class="vs-num">500K</div><div class="vs-lbl"><span class="fr">Abonnés en ligne</span><span class="en">Online followers</span></div></div>
+    <div class="vs"><div class="vs-num">5 ans</div><div class="vs-lbl"><span class="fr">Pour y arriver</span><span class="en">To get there</span></div></div>
+  </div>
+</div>
+
+<div class="cta">
+  <h3><span class="fr">🚀 Commencez Maintenant</span><span class="en">🚀 Start Now</span></h3>
+  <p><span class="fr">Retournez à la Phase 1 & 2 pour commencer votre liste de contrôle. Chaque étape accomplie vous rapproche de la vision.</span><span class="en">Go back to Phase 1 & 2 to start your checklist. Every step completed brings you closer to the vision.</span></p>
+  <div class="btn-row">
+    <a href="growth-phase-1-2.html" class="cta-btn2"><span class="fr">← Voir Phase 1 & 2</span><span class="en">← View Phase 1 & 2</span></a>
+    <a href="platform.html" class="cta-btn" onclick="return false;" style="opacity:.5;cursor:not-allowed"><span class="fr">Ouvrir le Tableau de Bord →</span><span class="en">Open Dashboard →</span></a>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="fn">Christian Church — Kolwezi, RD Congo</div>
+  <div class="fs"><span class="fr">Pasteur Djo Tshibal · Maman Patricia Tshibal · Document 2/2 — Phase 3 & 4</span><span class="en">Pastor Djo Tshibal · Maman Patricia Tshibal · Document 2/2 — Phase 3 & 4</span></div>
+</footer>
+
+<script>
+function toggleLang(){
+  document.body.classList.toggle('lang-en');
+  document.getElementById('lbtn').textContent=document.body.classList.contains('lang-en')?'🌐 FR':'🌐 EN';
+}
+function chk(el){
+  el.classList.toggle('done');
+  el.querySelector('.cb').textContent=el.classList.contains('done')?'✓':'';
+  save();
+}
+function save(){
+  const s=Array.from(document.querySelectorAll('.ck')).map(e=>e.classList.contains('done'));
+  localStorage.setItem('cc_p34',JSON.stringify(s));
+}
+(function load(){
+  const s=localStorage.getItem('cc_p34');
+  if(s){JSON.parse(s).forEach((v,i)=>{const el=document.querySelectorAll('.ck')[i];if(v&&el){el.classList.add('done');el.querySelector('.cb').textContent='✓';}});}
+})();
+</script>
+</body>
+</html>

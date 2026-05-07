@@ -10,7 +10,7 @@ A complete, bilingual (French/English) church growth platform built for GitHub P
 ## Live Site
 
 ```
-https://yourusername.github.io/christian-church-kolwezi/landing.html
+https://Here2ServeU.github.io/christian-church-kolwezi/landing.html
 ```
 
 > Replace `yourusername` with your actual GitHub username after deploying.

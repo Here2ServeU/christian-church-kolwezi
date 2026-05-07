@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Christian Church Kolwezi — Plateforme de croissance d'église. De 100 à 10 000 membres.">
+<meta property="og:title" content="Christian Church Kolwezi">
+<meta property="og:description" content="La plateforme de croissance qui emmène votre église de 100 à 10 000 membres.">
+<title>Christian Church Kolwezi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   TOKENS
+══════════════════════════════════════ */
+:root {
+  --ink:    #0A1420;
+  --deep:   #0D1B2A;
+  --surf:   #122030;
+  --card:   #172840;
+  --card2:  #1E3350;
+  --bdr:    #243D55;
+  --gold:   #C8952A;
+  --gl:     #E4AF45;
+  --gll:    #F5CC6A;
+  --gdim:   rgba(200,149,42,0.14);
+  --gdm:    rgba(200,149,42,0.07);
+  --txt:    #EDF2F8;
+  --sub:    #A8BCCE;
+  --mut:    #6A8599;
+  --grn:    #28C898;
+  --blu:    #4A96E8;
+  --pur:    #9270E0;
+  --red:    #E06868;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);color:var(--txt);
+  font-family:'Outfit',sans-serif;line-height:1.7;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--deep);}
+::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:10px;}
+
+/* ── LANGUAGE ── */
+.en{display:none!important;}span.en{display:none!important;}
+body.lang-en .en{display:block!important;}.lang-en .fr{display:none!important;}
+body.lang-en span.en{display:inline!important;}.lang-en span.fr{display:none!important;}
+
+/* ══════════════════════════════════════
+   NOISE OVERLAY
+══════════════════════════════════════ */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.4;
+}
+#root{position:relative;z-index:1;}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:0 48px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,20,32,0);
+  border-bottom:1px solid rgba(255,255,255,0);
+  transition:background .4s,border-color .4s;
+}
+#nav.scrolled{
+  background:rgba(10,20,32,0.94);
+  border-bottom-color:var(--bdr);
+  backdrop-filter:blur(16px);
+}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.nav-logo{
+  width:36px;height:36px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(145deg,#C8952A,#9A6E18);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  box-shadow:0 2px 12px rgba(200,149,42,0.35);
+}
+.nav-church{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt);letter-spacing:.02em;}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.lang-sw{
+  display:flex;align-items:center;
+  background:rgba(255,255,255,.06);border:1px solid var(--bdr);
+  border-radius:8px;padding:3px;gap:2px;
+}
+.lo{
+  padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;
+  cursor:pointer;border:none;background:transparent;color:var(--mut);
+  font-family:'DM Mono',monospace;letter-spacing:.05em;transition:.18s;
+}
+.lo.on{background:var(--gold);color:#0A1420;box-shadow:0 1px 8px rgba(200,149,42,.4);}
+.nav-cta{
+  padding:8px 20px;background:var(--gold);color:#0A1420;
+  border-radius:8px;font-size:13px;font-weight:700;
+  text-decoration:none;font-family:'Outfit',sans-serif;
+  transition:all .2s;box-shadow:0 2px 12px rgba(200,149,42,.3);
+}
+.nav-cta:hover{background:var(--gl);transform:translateY(-1px);}
+.mob-menu-btn{display:none;background:none;border:none;color:var(--txt);font-size:22px;cursor:pointer;padding:4px;}
+#mob-menu{
+  display:none;position:fixed;inset:0;z-index:850;
+  background:rgba(10,20,32,.97);backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;gap:32px;
+}
+#mob-menu.open{display:flex;}
+.mob-link{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--txt);text-decoration:none;transition:color .15s;}
+.mob-link:hover{color:var(--gl);}
+.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--mut);font-size:28px;cursor:pointer;}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:100px 48px 60px;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 40%,rgba(200,149,42,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 70%,rgba(74,150,232,0.05) 0%,transparent 60%),
+    linear-gradient(170deg,#0A1420 0%,#0D1B2A 50%,#0A1825 100%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%);
+}
+.hero-cross{
+  position:absolute;right:8%;top:50%;transform:translateY(-50%);
+  font-size:280px;opacity:.03;color:var(--gold);
+  font-family:'Cormorant Garamond',serif;user-select:none;pointer-events:none;
+  line-height:1;
+}
+.hero-inner{max-width:780px;position:relative;z-index:2;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gdim);border:1px solid rgba(200,149,42,.35);
+  border-radius:20px;padding:6px 16px;margin-bottom:26px;
+}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-dot 2s infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-eyebrow span{font-size:11px;font-weight:700;color:var(--gl);letter-spacing:.07em;text-transform:uppercase;font-family:'DM Mono',monospace;}
+.hero-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,6vw,76px);
+  font-weight:700;line-height:1.08;letter-spacing:-.01em;
+  margin-bottom:20px;
+}
+.hero-h1 em{font-style:italic;color:var(--gl);}
+.hero-sub{
+  font-size:clamp(15px,2vw,18px);color:var(--sub);
+  max-width:580px;margin-bottom:36px;line-height:1.7;font-weight:300;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:50px;}
+.btn-hero-primary{
+  padding:14px 28px;background:var(--gold);color:#0A1420;
+  border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;
+  transition:all .2s;box-shadow:0 4px 20px rgba(200,149,42,.35);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-hero-primary:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,149,42,.4);}
+.btn-hero-ghost{
+  padding:14px 28px;background:transparent;color:var(--txt);
+  border:1.5px solid var(--bdr);border-radius:10px;font-size:14px;font-weight:600;
+  text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-hero-ghost:hover{border-color:var(--gold);color:var(--gl);}
+.hero-pastors{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.pastor-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.pastor-chip{
+  display:flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.05);border:1px solid var(--bdr);
+  border-radius:40px;padding:8px 14px 8px 8px;
+}
+.pastor-chip-av{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--gdim);border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:var(--gl);
+  font-family:'DM Mono',monospace;flex-shrink:0;
+}
+.pastor-chip-name{font-size:12px;font-weight:600;line-height:1.2;}
+.pastor-chip-role{font-size:10px;color:var(--mut);}
+.hero-divider{width:1px;height:40px;background:var(--bdr);}
+.hero-loc{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px;}
+
+/* ══════════════════════════════════════
+   STATS BAR
+══════════════════════════════════════ */
+#stats{
+  border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
+  background:rgba(255,255,255,.025);padding:0 48px;
+}
+.stats-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  max-width:1100px;margin:0 auto;
+}
+.stat-item{
+  padding:28px 20px;display:flex;flex-direction:column;
+  border-right:1px solid var(--bdr);
+}
+.stat-item:last-child{border-right:none;}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;line-height:1;margin-bottom:4px;}
+.stat-lbl{font-size:12px;color:var(--mut);letter-spacing:.03em;}
+
+/* ══════════════════════════════════════
+   SECTION SHARED
+══════════════════════════════════════ */
+.section{padding:90px 48px;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-eyebrow{
+  font-size:11px;font-weight:700;color:var(--gold);
+  text-transform:uppercase;letter-spacing:.1em;
+  font-family:'DM Mono',monospace;margin-bottom:14px;
+}
+.section-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,4vw,48px);
+  font-weight:700;line-height:1.12;letter-spacing:-.01em;margin-bottom:14px;
+}
+.section-h2 em{font-style:italic;color:var(--gl);}
+.section-sub{font-size:16px;color:var(--sub);max-width:560px;line-height:1.7;font-weight:300;}
+.section-header{margin-bottom:52px;}
+
+/* ══════════════════════════════════════
+   FEATURES
+══════════════════════════════════════ */
+#features{background:var(--deep);}
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.feat-card{
+  background:var(--card);border:1px solid var(--bdr);border-radius:16px;
+  padding:26px;position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s;
+}
+.feat-card:hover{border-color:rgba(200,149,42,.4);transform:translateY(-3px);}
+.feat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity .2s;
+}
+.feat-card:hover::before{opacity:1;}
+.feat-icon{
+  width:46px;height:46px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:16px;
+}
+.feat-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;margin-bottom:8px;letter-spacing:.01em;}
+.feat-desc{font-size:13px;color:var(--sub);line-height:1.65;}
+.feat-tag{
+  display:inline-block;margin-top:14px;padding:3px 10px;border-radius:20px;
+  font-size:10px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:.05em;
+}
+
+/* ══════════════════════════════════════
+   ROADMAP
+══════════════════════════════════════ */
+#roadmap{background:var(--ink);}
+.roadmap-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
+.phase-card{
+  background:var(--card);border:1px solid var(--bdr);border-radius:16px;
+  overflow:hidden;transition:border-color .2s,transform .2s;
+  text-decoration:none;color:inherit;display:block;
+}
+.phase-card:hover{border-color:rgba(200,149,42,.5);transform:translateY(-3px);}
+.phase-stripe{height:3px;}
+.phase-card-body{padding:24px;}
+.phase-num-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.phase-num-badge{
+  font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;
+  line-height:1;opacity:.15;
+}
+.phase-status{padding:4px 11px;border-radius:20px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:.05em;}
+.phase-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace;margin-bottom:5px;}
+.phase-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;margin-bottom:3px;letter-spacing:.01em;}
+.phase-range{font-size:14px;color:var(--mut);}
+.phase-steps{margin-top:14px;padding-top:14px;border-top:1px solid var(--bdr);}
+.phase-step-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12px;color:var(--sub);}
+.phase-step-row::before{content:'▸';color:var(--gold);flex-shrink:0;font-size:10px;}
+.phase-card-footer{
+  padding:14px 24px;background:rgba(255,255,255,.025);
+  border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;
+}
+.phase-budget{font-size:12px;color:var(--gold);font-weight:700;font-family:'DM Mono',monospace;}
+.phase-cta{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:5px;transition:color .15s;}
+.phase-card:hover .phase-cta{color:var(--gl);}
+
+/* ══════════════════════════════════════
+   PRICING
+══════════════════════════════════════ */
+#pricing{background:var(--deep);}
+.billing-toggle{
+  display:inline-flex;background:var(--card);border:1px solid var(--bdr);
+  border-radius:9px;padding:3px;gap:2px;margin-bottom:40px;
+}
+.bil{
+  padding:7px 20px;border-radius:7px;font-size:12px;font-weight:700;
+  cursor:pointer;border:none;background:transparent;color:var(--mut);
+  font-family:'DM Mono',monospace;transition:.18s;letter-spacing:.04em;
+}
+.bil.on{background:var(--gold);color:#0A1420;box-shadow:0 1px 8px rgba(200,149,42,.4);}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.plan{
+  background:var(--card);border:1.5px solid var(--bdr);border-radius:18px;
+  padding:28px 24px;position:relative;transition:border-color .2s,transform .2s;
+}
+.plan:hover{transform:translateY(-3px);}
+.plan.pop{border-color:var(--gold);box-shadow:0 0 40px rgba(200,149,42,.12);}
+.plan-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:#0A1420;font-size:10px;font-weight:700;
+  padding:3px 16px;border-radius:20px;white-space:nowrap;
+  font-family:'DM Mono',monospace;letter-spacing:.05em;
+  box-shadow:0 2px 10px rgba(200,149,42,.4);
+}
+.plan-icon{font-size:28px;margin-bottom:14px;}
+.plan-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;margin-bottom:6px;letter-spacing:.01em;}
+.plan-price-wrap{display:flex;align-items:baseline;gap:2px;margin-bottom:3px;}
+.plan-price{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;line-height:1;}
+.plan-cadence{font-size:14px;color:var(--mut);}
+.plan-range{font-size:12px;color:var(--mut);margin-bottom:20px;}
+.plan-feat{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12px;color:var(--sub);padding:6px 0;
+  border-bottom:1px solid var(--bdr);line-height:1.5;
+}
+.plan-feat:last-of-type{border-bottom:none;}
+.plan-feat .tick{color:var(--grn);flex-shrink:0;font-weight:700;}
+.plan-btn{
+  width:100%;margin-top:20px;padding:13px;border-radius:10px;
+  font-size:14px;font-family:'Outfit',sans-serif;font-weight:700;
+  cursor:pointer;border:none;transition:all .2s;text-decoration:none;
+  display:block;text-align:center;
+}
+
+/* ══════════════════════════════════════
+   PASTORS
+══════════════════════════════════════ */
+#pastors{background:var(--ink);overflow:hidden;}
+.pastors-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.pastor-card{
+  background:var(--card);border:1px solid var(--bdr);border-radius:18px;
+  padding:32px;position:relative;overflow:hidden;
+}
+.pastor-card::after{
+  content:'✝';position:absolute;bottom:-20px;right:10px;
+  font-size:120px;color:var(--gold);opacity:.04;
+  font-family:'Cormorant Garamond',serif;user-select:none;
+}
+.pastor-av-lg{
+  width:64px;height:64px;border-radius:16px;
+  background:var(--gdim);border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:700;color:var(--gl);
+  font-family:'DM Mono',monospace;margin-bottom:18px;
+  box-shadow:0 4px 16px rgba(200,149,42,.2);
+}
+.pastor-title-sm{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace;margin-bottom:6px;}
+.pastor-name-lg{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:6px;letter-spacing:.01em;}
+.pastor-role{font-size:13px;color:var(--mut);margin-bottom:16px;}
+.pastor-desc{font-size:13px;color:var(--sub);line-height:1.7;}
+.pastor-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px;}
+.ptag{background:var(--gdim);border:1px solid rgba(200,149,42,.25);border-radius:6px;padding:4px 10px;font-size:11px;color:var(--gl);font-family:'DM Mono',monospace;letter-spacing:.03em;}
+
+/* ══════════════════════════════════════
+   CTA SECTION
+══════════════════════════════════════ */
+#cta-section{
+  background:linear-gradient(160deg,var(--deep) 0%,#0D2040 50%,var(--deep) 100%);
+  border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
+  padding:90px 48px;text-align:center;position:relative;overflow:hidden;
+}
+#cta-section::before{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:400px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(200,149,42,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-.01em;margin-bottom:16px;line-height:1.1;}
+.cta-h2 em{font-style:italic;color:var(--gl);}
+.cta-sub{font-size:16px;color:var(--sub);max-width:500px;margin:0 auto 38px;line-height:1.7;font-weight:300;}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.cta-links{display:flex;justify-content:center;gap:24px;margin-top:28px;flex-wrap:wrap;}
+.cta-link{font-size:13px;color:var(--mut);text-decoration:none;transition:color .15s;display:flex;align-items:center;gap:5px;}
+.cta-link:hover{color:var(--gl);}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{
+  background:var(--ink);border-top:1px solid var(--bdr);
+  padding:40px 48px;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;
+}
+.footer-brand{display:flex;align-items:center;gap:10px;}
+.footer-logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(145deg,#C8952A,#9A6E18);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--txt);}
+.footer-loc{font-size:10px;color:var(--mut);}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-link{font-size:12px;color:var(--mut);text-decoration:none;transition:color .15s;}
+.footer-link:hover{color:var(--gl);}
+.footer-copy{font-size:11px;color:var(--mut);font-family:'DM Mono',monospace;}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════ */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+.fade-up:nth-child(2){transition-delay:.1s;}
+.fade-up:nth-child(3){transition-delay:.2s;}
+.fade-up:nth-child(4){transition-delay:.3s;}
+.fade-up:nth-child(5){transition-delay:.4s;}
+.fade-up:nth-child(6){transition-delay:.5s;}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:960px){
+  #nav{padding:0 24px;}
+  #hero{padding:90px 24px 50px;}
+  .section{padding:70px 24px;}
+  #stats{padding:0 24px;}
+  #cta-section{padding:70px 24px;}
+  footer{padding:32px 24px;}
+  .features-grid{grid-template-columns:1fr 1fr;}
+  .roadmap-grid{grid-template-columns:1fr 1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .pastors-grid{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .stat-item:nth-child(2){border-right:none;}
+  .stat-item:nth-child(3){border-top:1px solid var(--bdr);}
+  .stat-item:nth-child(4){border-top:1px solid var(--bdr);}
+  .nav-cta{display:none;}
+}
+@media(max-width:640px){
+  .hero-h1{font-size:36px;}
+  .features-grid{grid-template-columns:1fr;}
+  .roadmap-grid{grid-template-columns:1fr;}
+  .mob-menu-btn{display:block;}
+  .nav-right .lang-sw{display:none;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .hero-btns{flex-direction:column;}
+  .btn-hero-primary,.btn-hero-ghost{text-align:center;justify-content:center;}
+  .cta-btns{flex-direction:column;align-items:center;}
+  .hero-pastors{flex-direction:column;align-items:flex-start;gap:10px;}
+}
+</style>
+</head>
+<body>
+<div id="root">
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav id="nav">
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">⛪</div>
+    <div>
+      <div class="nav-church">Christian Church</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lo on" id="lo-fr" onclick="setLang('fr')">FR</button>
+      <button class="lo" id="lo-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html" class="nav-cta">
+      <span class="fr">Ouvrir la Plateforme →</span>
+      <span class="en">Open Platform →</span>
+    </a>
+    <button class="mob-menu-btn" onclick="document.getElementById('mob-menu').classList.add('open')">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu">
+  <button class="mob-close" onclick="document.getElementById('mob-menu').classList.remove('open')">✕</button>
+  <a href="#features" class="mob-link fr" onclick="document.getElementById('mob-menu').classList.remove('open')">Fonctionnalités</a>
+  <a href="#features" class="mob-link en" onclick="document.getElementById('mob-menu').classList.remove('open')">Features</a>
+  <a href="#roadmap" class="mob-link fr" onclick="document.getElementById('mob-menu').classList.remove('open')">Plan de Croissance</a>
+  <a href="#roadmap" class="mob-link en" onclick="document.getElementById('mob-menu').classList.remove('open')">Growth Roadmap</a>
+  <a href="#pricing" class="mob-link fr" onclick="document.getElementById('mob-menu').classList.remove('open')">Tarification</a>
+  <a href="#pricing" class="mob-link en" onclick="document.getElementById('mob-menu').classList.remove('open')">Pricing</a>
+  <a href="index.html" class="mob-link" style="color:var(--gl)">
+    <span class="fr">Ouvrir la Plateforme →</span>
+    <span class="en">Open Platform →</span>
+  </a>
+  <div class="lang-sw" style="margin-top:10px">
+    <button class="lo on" id="mob-lo-fr" onclick="setLang('fr')">FR</button>
+    <button class="lo" id="mob-lo-en" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-cross">✝</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      <span class="fr">Kolwezi · RD Congo · Phase 2</span>
+      <span class="en">Kolwezi · DR Congo · Phase 2</span>
+    </div>
+    <h1 class="hero-h1 fr">
+      Une église de Kolwezi<br>
+      qui touche <em>le monde entier.</em>
+    </h1>
+    <h1 class="hero-h1 en">
+      A church from Kolwezi<br>
+      that reaches <em>the entire world.</em>
+    </h1>
+    <p class="hero-sub fr">
+      La plateforme complète pour faire croître Christian Church de 100 à 10 000 membres — avec des outils de classe mondiale adaptés à la RD Congo.
+    </p>
+    <p class="hero-sub en">
+      The complete platform to grow Christian Church from 100 to 10,000 members — with world-class tools built for DR Congo.
+    </p>
+    <div class="hero-btns">
+      <a href="index.html" class="btn-hero-primary">
+        <span>⛪</span>
+        <span class="fr">Ouvrir la Plateforme</span>
+        <span class="en">Open the Platform</span>
+      </a>
+      <a href="growth-phase-1-2.html" class="btn-hero-ghost">
+        <span>🗺️</span>
+        <span class="fr">Voir le Plan de Croissance</span>
+        <span class="en">View Growth Strategy</span>
+      </a>
+    </div>
+    <div class="hero-pastors">
+      <div class="pastor-chips">
+        <div class="pastor-chip">
+          <div class="pastor-chip-av">DT</div>
+          <div>
+            <div class="pastor-chip-name">Pasteur Djo Tshibal</div>
+            <div class="pastor-chip-role fr">Pasteur Principal</div>
+            <div class="pastor-chip-role en">Lead Pastor</div>
+          </div>
+        </div>
+        <div class="pastor-chip">
+          <div class="pastor-chip-av">PT</div>
+          <div>
+            <div class="pastor-chip-name">Maman Patricia Tshibal</div>
+            <div class="pastor-chip-role fr">Pasteure Co-Fondatrice</div>
+            <div class="pastor-chip-role en">Co-Founding Pastor</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-loc">📍 <span>Kolwezi, Lualaba, RD Congo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-val" style="color:var(--gl)">601</div>
+      <div class="stat-lbl fr">Membres actifs · Phase 2</div>
+      <div class="stat-lbl en">Active members · Phase 2</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val" style="color:var(--grn)">10 000</div>
+      <div class="stat-lbl fr">Objectif Vision 5 ans</div>
+      <div class="stat-lbl en">5-year vision goal</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val" style="color:var(--blu)">4</div>
+      <div class="stat-lbl fr">Phases de Croissance</div>
+      <div class="stat-lbl en">Growth Phases</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val" style="color:var(--pur)">3</div>
+      <div class="stat-lbl fr">Continents touchés (diaspora)</div>
+      <div class="stat-lbl en">Continents reached (diaspora)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<section id="features" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow fr">La Plateforme</div>
+      <div class="section-eyebrow en">The Platform</div>
+      <h2 class="section-h2 fr">Tout ce dont votre église<br>a besoin pour <em>croître.</em></h2>
+      <h2 class="section-h2 en">Everything your church<br>needs to <em>grow.</em></h2>
+      <p class="section-sub fr">11 modules intégrés. Bilingue français & anglais. Optimisé pour la RD Congo — Orange Money, Airtel, WhatsApp.</p>
+      <p class="section-sub en">11 integrated modules. Bilingual French & English. Optimized for DR Congo — Orange Money, Airtel, WhatsApp.</p>
+    </div>
+    <div class="features-grid" id="feat-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════ ROADMAP ══════════════ -->
+<section id="roadmap" class="section" style="background:var(--ink)">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow fr">Plan de Croissance</div>
+      <div class="section-eyebrow en">Growth Roadmap</div>
+      <h2 class="section-h2 fr">De 100 à <em>10 000 membres</em><br>en 5 ans.</h2>
+      <h2 class="section-h2 en">From 100 to <em>10,000 members</em><br>in 5 years.</h2>
+      <p class="section-sub fr">Un système complet, phase par phase, adapté à Kolwezi et à la diaspora congolaise mondiale.</p>
+      <p class="section-sub en">A complete system, phase by phase, adapted for Kolwezi and the global Congolese diaspora.</p>
+    </div>
+    <div class="roadmap-grid" id="roadmap-grid"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+      <a href="growth-phase-1-2.html" class="btn-hero-ghost" style="font-size:13px;padding:11px 22px">
+        <span class="fr">📄 Voir Phase 1 & 2 en détail</span>
+        <span class="en">📄 View Phase 1 & 2 in detail</span>
+      </a>
+      <a href="growth-phase-3-4.html" class="btn-hero-ghost" style="font-size:13px;padding:11px 22px">
+        <span class="fr">📄 Voir Phase 3 & 4 en détail</span>
+        <span class="en">📄 View Phase 3 & 4 in detail</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PRICING ══════════════ -->
+<section id="pricing" class="section" style="background:var(--deep)">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow fr">Tarification</div>
+      <div class="section-eyebrow en">Pricing</div>
+      <h2 class="section-h2 fr">Qualité mondiale.<br><em>Prix accessibles.</em></h2>
+      <h2 class="section-h2 en">World-class quality.<br><em>Accessible prices.</em></h2>
+      <p class="section-sub fr">L'équivalent USA/Canada coûte $500–$800/mois. Économisez jusqu'à 81% avec nos plans conçus pour l'Afrique.</p>
+      <p class="section-sub en">USA/Canada equivalent costs $500–$800/month. Save up to 81% with our Africa-designed plans.</p>
+    </div>
+    <div class="billing-toggle">
+      <button class="bil on" id="bil-mo-fr" onclick="setBil('monthly')">
+        <span class="fr">Mensuel</span><span class="en">Monthly</span>
+      </button>
+      <button class="bil" id="bil-yr-fr" onclick="setBil('yearly')">
+        <span class="fr">Annuel (−2 mois)</span><span class="en">Annual (save 2mo)</span>
+      </button>
+    </div>
+    <div class="pricing-grid" id="price-grid"></div>
+    <div style="background:var(--gdim);border:1px solid rgba(200,149,42,.3);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--gl);margin-top:4px">
+      💡 <span class="fr">Paiement accepté : Orange Money · Airtel Money · PayPal · Visa/Mastercard</span>
+      <span class="en">Accepted: Orange Money · Airtel Money · PayPal · Visa/Mastercard</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PASTORS ══════════════ -->
+<section id="pastors" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow fr">Leadership</div>
+      <div class="section-eyebrow en">Leadership</div>
+      <h2 class="section-h2 fr">Conduits par la foi.<br><em>Bâtisseurs de nations.</em></h2>
+      <h2 class="section-h2 en">Led by faith.<br><em>Nation builders.</em></h2>
+    </div>
+    <div class="pastors-grid">
+      <div class="pastor-card">
+        <div class="pastor-av-lg">DT</div>
+        <div class="pastor-title-sm fr">Pasteur Principal</div>
+        <div class="pastor-title-sm en">Lead Pastor</div>
+        <div class="pastor-name-lg">Pasteur Djo Tshibal</div>
+        <div class="pastor-role fr">Fondateur · Christian Church Kolwezi</div>
+        <div class="pastor-role en">Founder · Christian Church Kolwezi</div>
+        <p class="pastor-desc fr">Pasteur visionnaire avec une foi qui déplace les montagnes. Depuis Kolwezi, il bâtit une église appelée à toucher le Katanga, la RD Congo et le monde entier.</p>
+        <p class="pastor-desc en">Visionary pastor with a mountain-moving faith. From Kolwezi, he is building a church called to reach Katanga, DRC, and the entire world.</p>
+        <div class="pastor-tags">
+          <span class="ptag">Vision</span>
+          <span class="ptag fr">Prédication</span><span class="ptag en">Preaching</span>
+          <span class="ptag fr">Leadership</span><span class="ptag en">Leadership</span>
+          <span class="ptag fr">Stratégie</span><span class="ptag en">Strategy</span>
+        </div>
+      </div>
+      <div class="pastor-card">
+        <div class="pastor-av-lg">PT</div>
+        <div class="pastor-title-sm fr">Pasteure Co-Fondatrice</div>
+        <div class="pastor-title-sm en">Co-Founding Pastor</div>
+        <div class="pastor-name-lg">Maman Patricia Tshibal</div>
+        <div class="pastor-role fr">Co-Fondatrice · Christian Church Kolwezi</div>
+        <div class="pastor-role en">Co-Founder · Christian Church Kolwezi</div>
+        <p class="pastor-desc fr">Pilier de la famille pastorale et architecte du ministère des femmes, des familles et de la prochaine génération. Sa force est le cœur de Christian Church.</p>
+        <p class="pastor-desc en">Pillar of the pastoral family and architect of women's ministry, families, and the next generation. Her strength is the heart of Christian Church.</p>
+        <div class="pastor-tags">
+          <span class="ptag fr">Famille</span><span class="ptag en">Family</span>
+          <span class="ptag fr">Femmes</span><span class="ptag en">Women</span>
+          <span class="ptag fr">Jeunesse</span><span class="ptag en">Youth</span>
+          <span class="ptag fr">Intercession</span><span class="ptag en">Intercession</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA ══════════════ -->
+<section id="cta-section">
+  <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center">
+    <div class="section-eyebrow" style="text-align:center;margin-bottom:18px">
+      <span class="fr">Commencez Aujourd'hui</span>
+      <span class="en">Start Today</span>
+    </div>
+    <h2 class="cta-h2 fr">Votre église est prête<br>pour <em>le prochain niveau.</em></h2>
+    <h2 class="cta-h2 en">Your church is ready<br>for <em>the next level.</em></h2>
+    <p class="cta-sub fr">Ouvrez la plateforme, explorez chaque module, et commencez votre plan de croissance dès maintenant — depuis votre téléphone.</p>
+    <p class="cta-sub en">Open the platform, explore every module, and start your growth plan right now — from your phone.</p>
+    <div class="cta-btns">
+      <a href="index.html" class="btn-hero-primary" style="font-size:15px;padding:16px 34px">
+        <span>⛪</span>
+        <span class="fr">Ouvrir la Plateforme</span>
+        <span class="en">Open the Platform</span>
+      </a>
+    </div>
+    <div class="cta-links">
+      <a href="growth-phase-1-2.html" class="cta-link">
+        📄 <span class="fr">Phase 1 & 2</span><span class="en">Phase 1 & 2</span>
+      </a>
+      <a href="growth-phase-3-4.html" class="cta-link">
+        📄 <span class="fr">Phase 3 & 4</span><span class="en">Phase 3 & 4</span>
+      </a>
+      <a href="#pricing" class="cta-link">
+        💎 <span class="fr">Tarification</span><span class="en">Pricing</span>
+      </a>
+      <a href="#pastors" class="cta-link">
+        ✝️ <span class="fr">Leadership</span><span class="en">Leadership</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">⛪</div>
+      <div>
+        <div class="footer-name">Christian Church</div>
+        <div class="footer-loc">Kolwezi · Lualaba · RD Congo</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link fr">Plateforme</a>
+      <a href="index.html" class="footer-link en">Platform</a>
+      <a href="growth-phase-1-2.html" class="footer-link">Phase 1 & 2</a>
+      <a href="growth-phase-3-4.html" class="footer-link">Phase 3 & 4</a>
+      <a href="#pricing" class="footer-link fr">Tarification</a>
+      <a href="#pricing" class="footer-link en">Pricing</a>
+    </div>
+    <div class="footer-copy">
+      <span class="fr">© 2025 Christian Church Kolwezi · Pasteur Djo & Maman Patricia Tshibal</span>
+      <span class="en">© 2025 Christian Church Kolwezi · Pastor Djo & Maman Patricia Tshibal</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /root -->
+
+<script>
+/* ════════════════════════════════
+   DATA
+════════════════════════════════ */
+const FEATS = {
+  fr:[
+    {icon:'📊',bg:'rgba(200,149,42,.12)',color:'#C8952A',title:'Tableau de Bord',desc:'Vue complète de votre église : membres, présence, dons et santé de la congrégation en un coup d\'œil.',tag:'Vue d\'ensemble',tagBg:'rgba(200,149,42,.12)',tagC:'#C8952A'},
+    {icon:'👥',bg:'rgba(74,150,232,.12)',color:'#4A96E8',title:'Gestion des Membres',desc:'Répertoire complet avec profils, historique de dons, cellules, statut spirituel et étiquettes personnalisées.',tag:'601 membres',tagBg:'rgba(74,150,232,.12)',tagC:'#4A96E8'},
+    {icon:'💰',bg:'rgba(40,200,152,.12)',color:'#28C898',title:'Dons & Finances',desc:'Orange Money, Airtel Money et PayPal intégrés. Dons récurrents automatiques. Tableau de bord financier complet.',tag:'Mobile Money',tagBg:'rgba(40,200,152,.12)',tagC:'#28C898'},
+    {icon:'🎙️',bg:'rgba(146,112,224,.12)',color:'#9270E0',title:'Bibliothèque de Sermons',desc:'Chargez, organisez et distribuez chaque sermon. Lien direct avec YouTube, Spotify Podcasts et Apple.',tag:'Contenu & Médias',tagBg:'rgba(146,112,224,.12)',tagC:'#9270E0'},
+    {icon:'🤝',bg:'rgba(200,149,42,.12)',color:'#C8952A',title:'Cellules & Groupes',desc:'Gérez vos 6 cellules (objectif 20). Score de santé, présences, responsables et réunions hebdomadaires.',tag:'Discipulat',tagBg:'rgba(200,149,42,.12)',tagC:'#C8952A'},
+    {icon:'📣',bg:'rgba(232,104,104,.12)',color:'#E87070',title:'Campagnes & WhatsApp',desc:'Email, SMS et WhatsApp Business depuis une seule interface. Segmentation membres, visiteurs, diaspora.',tag:'Communication',tagBg:'rgba(232,104,104,.12)',tagC:'#E87070'},
+    {icon:'🙏',bg:'rgba(40,200,152,.12)',color:'#28C898',title:'Mur de Prière',desc:'Soumettez, priez et marquez les prières exaucées. Le moteur spirituel de votre congrégation.',tag:'Intercession',tagBg:'rgba(40,200,152,.12)',tagC:'#28C898'},
+    {icon:'🌟',bg:'rgba(74,150,232,.12)',color:'#4A96E8',title:'Bénévoles',desc:'87 bénévoles dans 8 équipes. Gestion des rôles, des heures et des scores de satisfaction en temps réel.',tag:'Service',tagBg:'rgba(74,150,232,.12)',tagC:'#4A96E8'},
+    {icon:'🗺️',bg:'rgba(146,112,224,.12)',color:'#9270E0',title:'Plan de Croissance',desc:'4 phases de 100 à 10 000 membres. Listes de contrôle, indicateurs, outils et budgets à chaque étape.',tag:'Stratégie',tagBg:'rgba(146,112,224,.12)',tagC:'#9270E0'},
+  ],
+  en:[
+    {icon:'📊',bg:'rgba(200,149,42,.12)',color:'#C8952A',title:'Dashboard',desc:'Complete view of your church: members, attendance, giving, and congregation health at a glance.',tag:'Overview',tagBg:'rgba(200,149,42,.12)',tagC:'#C8952A'},
+    {icon:'👥',bg:'rgba(74,150,232,.12)',color:'#4A96E8',title:'Member Management',desc:'Complete directory with profiles, giving history, groups, spiritual stage, and custom tags.',tag:'601 members',tagBg:'rgba(74,150,232,.12)',tagC:'#4A96E8'},
+    {icon:'💰',bg:'rgba(40,200,152,.12)',color:'#28C898',title:'Giving & Finance',desc:'Orange Money, Airtel Money, and PayPal integrated. Automatic recurring giving. Full financial dashboard.',tag:'Mobile Money',tagBg:'rgba(40,200,152,.12)',tagC:'#28C898'},
+    {icon:'🎙️',bg:'rgba(146,112,224,.12)',color:'#9270E0',title:'Sermon Library',desc:'Upload, organize, and distribute every sermon. Direct links to YouTube, Spotify Podcasts, and Apple.',tag:'Content & Media',tagBg:'rgba(146,112,224,.12)',tagC:'#9270E0'},
+    {icon:'🤝',bg:'rgba(200,149,42,.12)',color:'#C8952A',title:'Groups & Cells',desc:'Manage your 6 cells (goal: 20). Health score, attendance, leaders, and weekly meeting tracking.',tag:'Discipleship',tagBg:'rgba(200,149,42,.12)',tagC:'#C8952A'},
+    {icon:'📣',bg:'rgba(232,104,104,.12)',color:'#E87070',title:'Campaigns & WhatsApp',desc:'Email, SMS, and WhatsApp Business from one interface. Segmentation for members, visitors, diaspora.',tag:'Communication',tagBg:'rgba(232,104,104,.12)',tagC:'#E87070'},
+    {icon:'🙏',bg:'rgba(40,200,152,.12)',color:'#28C898',title:'Prayer Wall',desc:'Submit, pray, and mark answered prayers. The spiritual engine of your congregation.',tag:'Intercession',tagBg:'rgba(40,200,152,.12)',tagC:'#28C898'},
+    {icon:'🌟',bg:'rgba(74,150,232,.12)',color:'#4A96E8',title:'Volunteers',desc:'87 volunteers across 8 teams. Role management, hours tracking, and real-time satisfaction scores.',tag:'Service',tagBg:'rgba(74,150,232,.12)',tagC:'#4A96E8'},
+    {icon:'🗺️',bg:'rgba(146,112,224,.12)',color:'#9270E0',title:'Growth Roadmap',desc:'4 phases from 100 to 10,000 members. Checklists, KPIs, tools, and budgets at each step.',tag:'Strategy',tagBg:'rgba(146,112,224,.12)',tagC:'#9270E0'},
+  ],
+};
+
+const PHASES_DATA = [
+  {
+    ph:'Phase 1',range:'100 → 300',color:'#4A96E8',colorDim:'rgba(74,150,232,0.12)',done:true,
+    titleFr:'Fondation',titleEn:'Foundation',
+    timeFr:'Mois 1–6',timeEn:'Months 1–6',
+    stepsFr:['Site web bilingue + Google My Business','Dons mobiles (Orange Money, Airtel, PayPal)','4–6 premières cellules à Kolwezi','WhatsApp Business + YouTube + Podcast'],
+    stepsEn:['Bilingual website + Google My Business','Mobile giving (Orange Money, Airtel, PayPal)','4–6 first small groups in Kolwezi','WhatsApp Business + YouTube + Podcast'],
+    budget:'$9–$18/mo',link:'growth-phase-1-2.html',
+  },
+  {
+    ph:'Phase 2',range:'300 → 1 000',color:'#C8952A',colorDim:'rgba(200,149,42,0.12)',active:true,
+    titleFr:'Moteur de Croissance',titleEn:'Growth Engine',
+    timeFr:'Mois 7–18 · EN COURS',timeEn:'Months 7–18 · ACTIVE',
+    stepsFr:['ChMS + campus en ligne (500+ membres)','Premier sermon viral (100K vues)','50+ bénévoles formés (8 équipes)','Dons récurrents + programme VIP'],
+    stepsEn:['ChMS + online campus (500+ members)','First viral sermon (100K views)','50+ volunteers trained (8 teams)','Recurring giving + VIP program'],
+    budget:'$200–$400/mo',link:'growth-phase-1-2.html',
+  },
+  {
+    ph:'Phase 3',range:'1 000 → 3 000',color:'#28C898',colorDim:'rgba(40,200,152,0.12)',
+    titleFr:'Préparation Multi-Sites',titleEn:'Multi-Site Preparation',
+    timeFr:'Mois 19–36',timeEn:'Months 19–36',
+    stepsFr:['Pasteur associé + équipe (5–8)','Application mobile de l\'église','Fonds de Construction + École de Ministère','2e site : Lubumbashi ou Likasi'],
+    stepsEn:['Associate pastor + team (5–8)','Church mobile app launch','Building Fund + Ministry School','2nd site: Lubumbashi or Likasi'],
+    budget:'$600–$1K/mo',link:'growth-phase-3-4.html',
+  },
+  {
+    ph:'Phase 4',range:'3 000 → 10 000+',color:'#9270E0',colorDim:'rgba(146,112,224,0.12)',
+    titleFr:'Le Mouvement',titleEn:'The Movement',
+    timeFr:'Mois 37–60',timeEn:'Months 37–60',
+    stepsFr:['2–4 sites multi-sites au Katanga','Présence TV & radio nationale','Conférence annuelle (1 000+ participants)','Impact social : ONG, école, clinique'],
+    stepsEn:['2–4 multi-site locations in Katanga','National TV & radio presence','Annual conference (1,000+ attendees)','Social impact: NGO, school, clinic'],
+    budget:'$1.5K–$3K/mo',link:'growth-phase-3-4.html',
+  },
+];
+
+const PLANS_DATA = {
+  fr:[
+    {icon:'🌱',name:'Plan SEMENCE',range:'50–300 membres',price:29,priceY:290,color:'#4A96E8',colorDim:'rgba(74,150,232,0.12)',
+     f:['Site web bilingue (WordPress)','Dons mobiles (Orange Money, Airtel)','WhatsApp Business communautaire','YouTube + Facebook Live','Newsletter email (500 abonnés)','Calendrier d\'événements','2 admins · 5 Go stockage · Support email']},
+    {icon:'🌾',name:'Plan RÉCOLTE',range:'300–1 500 membres',price:79,priceY:790,color:'#C8952A',colorDim:'rgba(200,149,42,0.12)',pop:true,
+     f:['Tout du Plan Semence','Logiciel de gestion (ChMS)','Campagnes SMS & WhatsApp','Dons récurrents automatiques','Bibliothèque de sermons + podcast','Mur de prière · Gestion cellules','10 admins · 50 Go · Support prioritaire + coaching/mois']},
+    {icon:'🏛️',name:'Plan MOUVEMENT',range:'1 500–10 000+ membres',price:149,priceY:1490,color:'#9270E0',colorDim:'rgba(146,112,224,0.12)',
+     f:['Tout du Plan Récolte','Application mobile (iOS & Android)','Gestion multi-sites','Diffusion HD en direct','Portail diaspora international','500 Go · Admins illimités · Responsable dédié + coaching hebdo']},
+  ],
+  en:[
+    {icon:'🌱',name:'SEED Plan',range:'50–300 members',price:29,priceY:290,color:'#4A96E8',colorDim:'rgba(74,150,232,0.12)',
+     f:['Bilingual website (WordPress)','Mobile giving (Orange Money, Airtel)','Community WhatsApp Business','YouTube + Facebook Live','Email newsletter (500 subscribers)','Online events calendar','2 admins · 5 GB storage · Email support']},
+    {icon:'🌾',name:'HARVEST Plan',range:'300–1,500 members',price:79,priceY:790,color:'#C8952A',colorDim:'rgba(200,149,42,0.12)',pop:true,
+     f:['Everything in Seed Plan','Church management software (ChMS)','SMS & WhatsApp campaigns','Automatic recurring giving','Sermon library + podcast','Prayer wall · Groups management','10 admins · 50 GB · Priority support + coaching/month']},
+    {icon:'🏛️',name:'MOVEMENT Plan',range:'1,500–10,000+ members',price:149,priceY:1490,color:'#9270E0',colorDim:'rgba(146,112,224,0.12)',
+     f:['Everything in Harvest Plan','Custom mobile app (iOS & Android)','Multi-site management','HD live streaming','International diaspora portal','500 GB · Unlimited admins · Dedicated manager + weekly coaching']},
+  ],
+};
+
+/* ════════════════════════════════
+   STATE
+════════════════════════════════ */
+let lang='fr', billing='monthly';
+
+/* ════════════════════════════════
+   LANGUAGE
+════════════════════════════════ */
+function setLang(l){
+  lang=l;
+  document.body.classList.toggle('lang-en',l==='en');
+  ['lo-fr','mob-lo-fr'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',l==='fr');});
+  ['lo-en','mob-lo-en'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',l==='en');});
+  buildFeatures(); buildRoadmap(); buildPricing();
+}
+
+/* ════════════════════════════════
+   FEATURES
+════════════════════════════════ */
+function buildFeatures(){
+  const feats=FEATS[lang];
+  document.getElementById('feat-grid').innerHTML=feats.map(f=>`
+    <div class="feat-card fade-up">
+      <div class="feat-icon" style="background:${f.bg}">${f.icon}</div>
+      <div class="feat-title">${f.title}</div>
+      <div class="feat-desc">${f.desc}</div>
+      <span class="feat-tag" style="background:${f.tagBg};color:${f.tagC}">${f.tag}</span>
+    </div>`).join('');
+  observeFade();
+}
+
+/* ════════════════════════════════
+   ROADMAP
+════════════════════════════════ */
+function buildRoadmap(){
+  document.getElementById('roadmap-grid').innerHTML=PHASES_DATA.map((ph,i)=>{
+    const title=lang==='fr'?ph.titleFr:ph.titleEn;
+    const time=lang==='fr'?ph.timeFr:ph.timeEn;
+    const steps=lang==='fr'?ph.stepsFr:ph.stepsEn;
+    const statusTxt=ph.done?(lang==='fr'?'✓ Complété':'✓ Complete'):ph.active?(lang==='fr'?'● En Cours':'● Active'):(lang==='fr'?'À venir':'Upcoming');
+    const statusBg=ph.done?'rgba(40,200,152,0.15)':ph.active?'rgba(200,149,42,0.15)':'rgba(255,255,255,0.05)';
+    const statusC=ph.done?'#28C898':ph.active?'#C8952A':'var(--mut)';
+    const ctaTxt=lang==='fr'?'Voir le plan complet →':'View full plan →';
+    return`
+    <a class="phase-card fade-up" href="${ph.link}" style="text-decoration:none;color:inherit">
+      <div class="phase-stripe" style="background:linear-gradient(90deg,${ph.color},${ph.color}66)"></div>
+      <div class="phase-card-body">
+        <div class="phase-num-row">
+          <div>
+            <div class="phase-label" style="color:${ph.color}">${ph.ph} · ${time}</div>
+            <div class="phase-title">${title}</div>
+            <div class="phase-range">${ph.range}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+            <span class="phase-status" style="background:${statusBg};color:${statusC}">${statusTxt}</span>
+            <span class="phase-num-badge" style="color:${ph.color}">${i+1}</span>
+          </div>
+        </div>
+        <div class="phase-steps">
+          ${steps.map(s=>`<div class="phase-step-row">${s}</div>`).join('')}
+        </div>
+      </div>
+      <div class="phase-card-footer">
+        <span class="phase-budget">${ph.budget}</span>
+        <span class="phase-cta">${ctaTxt} <span style="font-size:16px">→</span></span>
+      </div>
+    </a>`;
+  }).join('');
+  observeFade();
+}
+
+/* ════════════════════════════════
+   PRICING
+════════════════════════════════ */
+function buildPricing(){
+  const plans=PLANS_DATA[lang];
+  document.getElementById('price-grid').innerHTML=plans.map(pl=>{
+    const price=billing==='monthly'?pl.price:Math.round(pl.priceY/12);
+    const cadence=lang==='fr'?'/ mois':'/ month';
+    const chooseTxt=lang==='fr'?'Choisir Ce Plan':'Choose This Plan';
+    const popTxt=lang==='fr'?'⭐ Recommandé':'⭐ Recommended';
+    const yearNote=billing==='yearly'?`<div style="font-size:11px;color:var(--grn);margin-bottom:4px">$${pl.priceY}${lang==='fr'?' / an':' / year'}</div>`:'';
+    return`
+    <div class="plan${pl.pop?' pop':''}">
+      ${pl.pop?`<div class="plan-badge">${popTxt}</div>`:''}
+      <div class="plan-icon">${pl.icon}</div>
+      <div class="plan-name">${pl.name}</div>
+      <div class="plan-price-wrap">
+        <span class="plan-price" style="color:${pl.color}">$${price}</span>
+        <span class="plan-cadence">${cadence}</span>
+      </div>
+      ${yearNote}
+      <div class="plan-range">${pl.range}</div>
+      ${pl.f.map(f=>`<div class="plan-feat"><span class="tick">✓</span>${f}</div>`).join('')}
+      <a href="index.html" class="plan-btn" style="${pl.pop?`background:${pl.color};color:#0A1420;box-shadow:0 4px 16px ${pl.color}44`:`background:transparent;color:${pl.color};border:1.5px solid ${pl.color}55`}">
+        ${chooseTxt}
+      </a>
+    </div>`;
+  }).join('');
+}
+
+function setBil(v){
+  billing=v;
+  document.getElementById('bil-mo-fr').classList.toggle('on',v==='monthly');
+  document.getElementById('bil-yr-fr').classList.toggle('on',v==='yearly');
+  buildPricing();
+}
+
+/* ════════════════════════════════
+   SCROLL EFFECTS
+════════════════════════════════ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+function observeFade(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(el=>obs.observe(el));
+}
+
+/* ════════════════════════════════
+   BOOT
+════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',()=>{
+  buildFeatures(); buildRoadmap(); buildPricing(); observeFade();
+});
+</script>
+</body>
+</html>

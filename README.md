@@ -9,11 +9,7 @@ A complete, bilingual (French/English) church growth platform built for GitHub P
 
 ## Live Site
 
-```
-https://Here2ServeU.github.io/christian-church-kolwezi/landing.html
-```
-
-> Replace `yourusername` with your actual GitHub username after deploying.
+**[https://Here2ServeU.github.io/christian-church-kolwezi/landing.html](https://Here2ServeU.github.io/christian-church-kolwezi/landing.html)**
 
 ---
 
@@ -98,6 +94,26 @@ Payment accepted: **Orange Money · Airtel Money · PayPal · Visa**
 - **Interactive charts** — powered by Chart.js (loaded from CDN)
 - **Checklist progress** — all phase steps are clickable and trackable
 - **Dark theme** — professional, easy on the eyes in all lighting
+
+---
+
+## Deploy to GitHub Pages
+
+1. **Upload** all files to this repository
+2. Go to **Settings → Pages**
+3. Under **Source**, select **Deploy from a branch**
+4. Set branch to **`main`** and folder to **`/ (root)`**
+5. Click **Save** — your site is live in ~60 seconds
+
+Share the link:
+
+**[https://Here2ServeU.github.io/christian-church-kolwezi/landing.html](https://Here2ServeU.github.io/christian-church-kolwezi/landing.html)**
+
+---
+
+## 🔄 Updating the Platform
+
+Every time you upload a new version of any file and commit it, GitHub automatically rebuilds and publishes within 1–2 minutes. The link never changes.
 
 ---
 
